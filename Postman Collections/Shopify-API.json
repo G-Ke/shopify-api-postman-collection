@@ -1,0 +1,411 @@
+{
+	"info": {
+		"_postman_id": "d729fba3-ff1a-4aa0-9fc8-0de5ec20d762",
+		"name": "Shopify-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth and Config",
+			"item": [
+				{
+					"name": "Get Shop Config",
+					"_postman_id": "d2703ef8-075e-4f51-b725-33bd03449b95",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/shop.json"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Access Scope",
+					"_postman_id": "45f74cae-2d85-4271-b131-834022713200",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "https://{{shopifyStoreDomain}}.myshopify.com/admin/oauth/access_scopes.json"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "de2a5d08-61e9-4d29-a42f-65996a38d433"
+		},
+		{
+			"name": "Messaging",
+			"item": [
+				{
+					"name": "Get Inbox Messages for Conversation ID",
+					"_postman_id": "97a38141-cfdb-46eb-a319-27cff1142804",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {},
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api//messaging/v1/conversations/{{conversationId}}}/messages"
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "0bad6a28-bc82-4570-8e77-6ed8523623e7"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "List Products",
+					"_postman_id": "76709978-90ae-4d3d-a809-f19d06fb56f2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/products.json?ids=8174673428780",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"products.json"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "8174673428780"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "099dc6a0-2457-4375-8325-516a5d8ff5cb"
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Get Order",
+					"_postman_id": "bfd6d516-d194-40e8-a4e4-180ec5ddf7ed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/orders/:orderId.json?fields=id,line_items,name,total_price",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"orders",
+								":orderId.json"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id,line_items,name,total_price"
+								}
+							],
+							"variable": [
+								{
+									"id": "f30f4d5d-f2dd-4448-b3b7-363cb097258a",
+									"key": "orderId",
+									"value": "5249200980268",
+									"type": "string"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Count by Status",
+					"_postman_id": "76e4424b-5325-47ec-94e0-29fd49b019ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/orders/count.json?status=any",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"orders",
+								"count.json"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "any"
+								},
+								{
+									"key": "status",
+									"value": "open",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "closed",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "cancelled",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders by Status",
+					"_postman_id": "f8c75566-b745-49b0-afd5-ba6dc0a819cd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/orders.json?status=any",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"orders.json"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "any"
+								},
+								{
+									"key": "status",
+									"value": "open",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "closed",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "cancelled",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Order",
+					"_postman_id": "d1b2d373-e209-4f2a-9f40-7273283a6411",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/orders/:orderId.json",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"orders",
+								":orderId.json"
+							],
+							"variable": [
+								{
+									"id": "becdeb92-df0a-4655-b4f6-7fa0593a13c4",
+									"key": "orderId",
+									"value": null,
+									"type": "any"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"_postman_id": "9b6cf84a-85cd-45c0-abde-66686d3c3dd9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": {
+								"value": "{{accessToken}}",
+								"key": "X-Shopify-Access-Token",
+								"in": "header"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://{{shopifyStoreDomain}}.myshopify.com/admin/api/2023-04/orders/:orderId.json",
+							"protocol": "https",
+							"host": [
+								"{{shopifyStoreDomain}}",
+								"myshopify",
+								"com"
+							],
+							"path": [
+								"admin",
+								"api",
+								"2023-04",
+								"orders",
+								":orderId.json"
+							],
+							"variable": [
+								{
+									"id": "9f0373f4-8d1e-46bc-a271-adf4dfbbcbf7",
+									"key": "orderId",
+									"value": null,
+									"type": "any"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"_postman_id": "08034e32-df24-4ed2-9863-32addd24099d"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "86c9cce7-69f4-4ebe-8b10-f8a04b7c7a09",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c6571244-e4c0-4e7c-ab7d-f17b18f3fb9b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
